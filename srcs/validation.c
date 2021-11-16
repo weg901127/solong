@@ -6,7 +6,7 @@
 /*   By: gilee <gilee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 18:03:12 by gilee             #+#    #+#             */
-/*   Updated: 2021/11/16 18:21:46 by gilee            ###   ########.fr       */
+/*   Updated: 2021/11/16 19:31:04 by gilee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,11 +94,15 @@ int	vali_map_shape(t_oneforall **all)
 		if (!(*all)->line_cnt)
 			(*all)->char_cnt = ft_strlen(buf);
 		if ((*all)->line_cnt && (*all)->char_cnt != (int)ft_strlen(buf))
+		{
+			free(buf);
 			return (FALSE);
+		}
 		((*all)->line_cnt)++;
 		if (buf)
 			free(buf);
 	}
+	free(buf);
 	close(fd);
 	return (TRUE);
 }

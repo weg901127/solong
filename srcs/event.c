@@ -6,7 +6,7 @@
 /*   By: gilee <gilee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 12:54:21 by gilee             #+#    #+#             */
-/*   Updated: 2021/11/16 15:59:03 by gilee            ###   ########.fr       */
+/*   Updated: 2021/11/16 20:04:49 by gilee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,5 @@ void	put_event(t_oneforall *all, void (*func)(t_oneforall *))
 	all->map[all->exit_y][all->exit_x] = 'E';
 	if (all->collectable_cnt == 0 && all->exit_x == all->player_x
 		&& all->exit_y == all->player_y)
-		exit(0);
+		my_exit(&all);
 }

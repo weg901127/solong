@@ -6,11 +6,11 @@
 #    By: gilee <gilee@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/16 12:53:59 by gilee             #+#    #+#              #
-#    Updated: 2021/11/16 18:12:13 by gilee            ###   ########.fr        #
+#    Updated: 2021/11/16 19:36:08 by gilee            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME  				= solong
+NAME  				= so_long
 
 CC 					= cc -g
 CFLAGS 				= -Wall -Wextra -Werror

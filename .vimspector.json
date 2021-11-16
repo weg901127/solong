@@ -15,7 +15,7 @@
       "debugOptions": [],
       "MIMode": "lldb",
       "cwd": "${cwd}",
-      "program": "${fileDirname}/../solong",
+      "program": "${fileDirname}/../so_long",
 	  "args" : ["test2.ber"]
     }
   }

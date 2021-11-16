@@ -6,7 +6,7 @@
 /*   By: gilee <gilee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 12:54:50 by gilee             #+#    #+#             */
-/*   Updated: 2021/11/16 18:34:04 by gilee            ###   ########.fr       */
+/*   Updated: 2021/11/16 19:13:31 by gilee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ typedef enum e_objs
 
 /* utils.c */
 void	put_step(t_oneforall *all);
+void	my_exit(t_oneforall **all);
 /* map.c */
 int		set_map(int line_cnt, char ***map, char *argv);
 /* validation.c */

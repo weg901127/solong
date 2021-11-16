@@ -6,7 +6,7 @@
 /*   By: gilee <gilee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 12:54:15 by gilee             #+#    #+#             */
-/*   Updated: 2021/11/16 13:21:39 by gilee            ###   ########.fr       */
+/*   Updated: 2021/11/16 20:27:50 by gilee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,11 @@ int	draw(t_oneforall *all)
 	while (tmp_line--)
 	{
 		while (tmp_char--)
+		{
 			mlx_put_image_to_window(all->mlx, all->win,
 				put_img(all, tmp_char, tmp_line),
 				tmp_char * TILE, tmp_line * TILE);
+		}
 		tmp_char = all->char_cnt;
 	}
 	return (0);
