@@ -16,11 +16,12 @@ char	*ft_strchr(const char *s, int c)
 {
 	size_t	len;
 
-	len = ft_strlen(s) + 1;
-	while (len--)
+	if (s)
 	{
-		if (*s++ == (char)c)
-			return ((char *)--s);
+		len = ft_strlen(s) + 1;
+		while (len--)
+			if (*s++ == (char)c)
+				return ((char *)--s);
 	}
 	return (NULL);
 }

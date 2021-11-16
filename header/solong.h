@@ -1,10 +1,9 @@
 #ifndef SOLONG_H
-# define	SOLONG_H
+# define SOLONG_H
 # include "../mlx/mlx.h"
 # include <stdio.h>
 # include <sys/fcntl.h>
 # include "get_next_line.h"
-# include "libft.h"
 # ifndef X_EVENT_KEY_PRESS
 #  define X_EVENT_KEY_PRESS		2
 # endif
@@ -47,46 +46,46 @@
 # ifndef COLLECTABLE_PATH
 #  define COLLECTABLE_PATH "./image/collectable.xpm"
 # endif
+
 typedef struct s_oneforall
 {
-    char **map;
-    int  line_cnt;
-    int  char_cnt;
-    int  player_x;
-    int  player_y;
-    int  move_cnt;
-    void *mlx;
-    void *win;
-    void *imgs[5];
-    int  img_width;
-    int  img_height;
-} t_oneforall;
+	char	**map;
+	int		line_cnt;
+	int		char_cnt;
+	int		player_x;
+	int		player_y;
+	int		move_cnt;
+	void	*mlx;
+	void	*win;
+	void	*imgs[5];
+	char	*argv;
+	int		img_width;
+	int		img_height;
+}	t_oneforall;
 
-typedef enum
+typedef enum e_objs
 {
-    WALL,
-    GROUND,
-    EXIT,
-    PLAYER,
-    COLLECTABLE
-} e_objs;
+	WALL,
+	GROUND,
+	EXIT,
+	PLAYER,
+	COLLECTABLE
+}	t_objs;
 
 /* utils.c */
-int charcnt(char *buf);
+void	put_step(t_oneforall *all);
 /* map.c */
-int set_map(int line_cnt, int char_cnt, char ***map);
-int vali_map_inner(t_oneforall **all);
-int vali_map_outter(t_oneforall **all);
-int vali_map_shape(int *line_cnt, int *char_cnt);
-int validation(t_oneforall **all);
+int		vali_map_inner(t_oneforall **all);
+int		vali_map_outter(t_oneforall **all);
+int		vali_map_shape(t_oneforall **all);
+int		validation(t_oneforall **all, int argc, char **argv);
 /* draw.c */
-int draw(t_oneforall *all);
-int	key_press(int keycode, t_oneforall *all);
+int		draw(t_oneforall *all);
+int		key_press(int keycode, t_oneforall *all);
 /* event.c */
-void press_a(t_oneforall *all);
-void press_s(t_oneforall *all);
-void press_d(t_oneforall *all);
-void press_w(t_oneforall *all);
-
+void	press_a(t_oneforall *all);
+void	press_s(t_oneforall *all);
+void	press_d(t_oneforall *all);
+void	press_w(t_oneforall *all);
 
 #endif

@@ -1,37 +1,46 @@
-NAME  		= solong
+NAME  								= solong
 
-CC 			= cc -v
-CFLAGS 		= -Wall -Wextra -Werror -L ./libft -lft -L ./mlx -lmlx -framework OpenGL -framework AppKit
-INCLUDE 	= -I./header/solong.h
-LIB_DIR 	= ./libft/
-LIB_NAME	= ft
-LIB			= $(LIB_DIR)lib$(LIB_NAME).a
+CC 											= cc
+CFLAGS 							= -Wall -Wextra -Werror
+FLAG_MLX 					= -framework OpenGL -framework AppKit
 
-SRCS					= ./srcs/map.c ./srcs/draw.c \
-											./srcs/event.c	./srcs/utils.c \
-											./srcs/solong.c
-GNL						= ./gnl/get_next_line.c ./gnl/get_next_line_utils.c
+LIBFT_DIR 				= ./libft/
+LIBFT_NAME				= libft.a
+LIBMLX_DIR				= ./mlx/
+LIBMLX_NAME			= libmlx.a
+LIB											= $(LIBFT_DIR)$(LIBFT_NAME) $(LIBMLX_DIR)$(LIBMLX_NAME)
 
-OBJ_SRCS		=	$(SRCS:.c=.o)
-OBJ_GNL		=	$(GNL:.c=.o)
+SRCS										= ./srcs/map.c ./srcs/draw.c \
+																./srcs/event.c	./srcs/utils.c \
+																./srcs/solong.c
+GNL											= ./gnl/get_next_line.c ./gnl/get_next_line_utils.c
+
+OBJ_SRCS						=	$(SRCS:.c=.o)
+OBJ_GNL							=	$(GNL:.c=.o)
+OBJ 										= $(OBJ_SRCS) $(OBJ_GNL)
+
 all : MAKE_LIB $(NAME)
 
+.c.o:
+	$(CC) $(CFLAGS) -c -o $@ $<
+
+$(NAME) : $(OBJ)
+	$(CC) $(OBJ) $(CFLAGS) $(FLAG_MLX) $(LIB) -o $(NAME)
+
 clean :
-	make -C $(LIB_DIR) clean
+	rm -f $(OBJ)
 
 fclean : clean
-	rm -rf $(NAME)
-	make -C $(LIB_DIR) fclean
+	rm -f $(NAME)
+	make -C $(LIBFT_DIR) fclean
+	make -C $(LIBMLX_DIR) clean
 
-re : fclean all
+re : clean
+	rm -f $(NAME)
+	make -C . all
 
 MAKE_LIB :
-	make -C $(LIB_DIR) all
-
-.c.o: $(SRCS) $(GNL)
-	$(CC) $(CFLAGS) $(INCLUDE) -c $<
-
-$(NAME) : $(OBJ_SRCS) $(OBJ_GNL)
-	$(CC) $(CFLAGS) -o solong $@
+	make -C $(LIBFT_DIR) all
+	make -C $(LIBMLX_DIR) all
 
 .PHONY : all clean fclean re

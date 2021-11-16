@@ -1,11 +1,10 @@
 #include "../header/solong.h"
 
-int charcnt(char *buf)
+void	put_step(t_oneforall *all)
 {
-    int cnt;
+	char	*tmp;
 
-    cnt = 0;
-    while(*buf++)
-        cnt++;
-    return cnt;
+	tmp = ft_itoa(++(all->move_cnt));
+	ft_putstr_fd(tmp, 0);
+	write(0, "\n", 1);
 }

@@ -20,12 +20,9 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <limits.h>
+# include "libft.h"
 
-size_t	ft_strlen(const char *src);
-char	*ft_strchr(const char *s, int c);
-void	*ft_memcpy(void *d, void const *s, size_t n);
-char	*ft_strjoin(char const *s1, char const *s2);
-char	*ft_strdup(const char *s1);
+char	*ft_strdup2(const char *s1);
 int		get_next_line(int fd, char **line);
 
 #endif
