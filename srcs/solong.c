@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   solong.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gilee <gilee@student.42seoul.kr>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/16 12:54:32 by gilee             #+#    #+#             */
+/*   Updated: 2021/11/16 18:33:44 by gilee            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../header/solong.h"
 
 void	init_imgs(t_oneforall *all)
@@ -22,19 +34,23 @@ void	init_imgs(t_oneforall *all)
 int	key_press(int keycode, t_oneforall *all)
 {
 	if (keycode == KEY_A)
-		press_a(all);
+		put_event(all, press_a);
 	else if (keycode == KEY_D)
-		press_d(all);
+		put_event(all, press_d);
 	else if (keycode == KEY_W)
-		press_w(all);
+		put_event(all, press_w);
 	else if (keycode == KEY_S)
-		press_s(all);
+		put_event(all, press_s);
 	else if (keycode == KEY_ESC)
 		exit(0);
 	put_step(all);
 	return (0);
 }
 
+int	close()
+{
+	exit(0);
+}
 int	main(int argc, char **argv)
 {
 	t_oneforall	*all;
@@ -50,6 +66,7 @@ int	main(int argc, char **argv)
 		(all->mlx, TILE * all->char_cnt, TILE * all->line_cnt, "so_long");
 	init_imgs(all);
 	mlx_hook(all->win, X_EVENT_KEY_PRESS, 0, &key_press, all);
+	//mlx_hook(all->win, X_EVENT_KEY_EXIT, 0, &close, all);
 	mlx_loop_hook(all->mlx, draw, all);
 	mlx_loop(all->mlx);
 	return (0);

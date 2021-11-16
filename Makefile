@@ -1,23 +1,35 @@
-NAME  								= solong
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: gilee <gilee@student.42seoul.kr>           +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2021/11/16 12:53:59 by gilee             #+#    #+#              #
+#    Updated: 2021/11/16 18:12:13 by gilee            ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-CC 											= cc
-CFLAGS 							= -Wall -Wextra -Werror
-FLAG_MLX 					= -framework OpenGL -framework AppKit
+NAME  				= solong
 
-LIBFT_DIR 				= ./libft/
-LIBFT_NAME				= libft.a
-LIBMLX_DIR				= ./mlx/
+CC 					= cc -g
+CFLAGS 				= -Wall -Wextra -Werror
+FLAG_MLX 			= -framework OpenGL -framework AppKit
+
+LIBFT_DIR 			= ./libft/
+LIBFT_NAME			= libft.a
+LIBMLX_DIR			= ./mlx/
 LIBMLX_NAME			= libmlx.a
-LIB											= $(LIBFT_DIR)$(LIBFT_NAME) $(LIBMLX_DIR)$(LIBMLX_NAME)
+LIB					= $(LIBFT_DIR)$(LIBFT_NAME) $(LIBMLX_DIR)$(LIBMLX_NAME)
 
-SRCS										= ./srcs/map.c ./srcs/draw.c \
-																./srcs/event.c	./srcs/utils.c \
-																./srcs/solong.c
-GNL											= ./gnl/get_next_line.c ./gnl/get_next_line_utils.c
+SRCS				= ./srcs/map.c ./srcs/draw.c \
+					./srcs/event.c	./srcs/utils.c \
+					./srcs/solong.c ./srcs/validation.c
+GNL					= ./gnl/get_next_line.c ./gnl/get_next_line_utils.c
 
-OBJ_SRCS						=	$(SRCS:.c=.o)
-OBJ_GNL							=	$(GNL:.c=.o)
-OBJ 										= $(OBJ_SRCS) $(OBJ_GNL)
+OBJ_SRCS			=	$(SRCS:.c=.o)
+OBJ_GNL				=	$(GNL:.c=.o)
+OBJ 				= $(OBJ_SRCS) $(OBJ_GNL)
 
 all : MAKE_LIB $(NAME)
 

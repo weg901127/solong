@@ -1,50 +1,39 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   solong.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gilee <gilee@student.42seoul.kr>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/16 12:54:50 by gilee             #+#    #+#             */
+/*   Updated: 2021/11/16 18:34:04 by gilee            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef SOLONG_H
 # define SOLONG_H
 # include "../mlx/mlx.h"
 # include <stdio.h>
 # include <sys/fcntl.h>
 # include "get_next_line.h"
-# ifndef X_EVENT_KEY_PRESS
-#  define X_EVENT_KEY_PRESS		2
-# endif
-# ifndef KEY_ESC
-#  define KEY_ESC			53
-# endif
-# ifndef KEY_W
-#  define KEY_W			13
-# endif
-# ifndef KEY_A
-#  define KEY_A			0
-# endif
-# ifndef KEY_S
-#  define KEY_S			1
-# endif
-# ifndef KEY_D
-#  define KEY_D			2
-# endif
-# ifndef TILE
-#  define TILE 32
-# endif
+# define X_EVENT_KEY_PRESS	2
+# define X_EVENT_KEY_EXIT	17
+# define KEY_ESC			53
+# define KEY_W				13
+# define KEY_A				0
+# define KEY_S				1
+# define KEY_D				2
+# define TILE 				32
+# define WALL_PATH "./image/wall.xpm"
+# define GROUND_PATH "./image/dadak.xpm"
+# define EXIT_PATH "./image/enemy.xpm"
+# define PLAYER_PATH "./image/player.xpm"
+# define COLLECTABLE_PATH "./image/collectable.xpm"
 # ifndef TRUE
-#  define TRUE 1
+#  define TRUE 	1
 # endif
 # ifndef FALSE
 #  define FALSE 0
-# endif
-# ifndef WALL_PATH
-#  define WALL_PATH "./image/wall.xpm"
-# endif
-# ifndef GROUND_PATH
-#  define GROUND_PATH "./image/dadak.xpm"
-# endif
-# ifndef EXIT_PATH
-#  define EXIT_PATH "./image/enemy.xpm"
-# endif
-# ifndef PLAYER_PATH
-#  define PLAYER_PATH "./image/player.xpm"
-# endif
-# ifndef COLLECTABLE_PATH
-#  define COLLECTABLE_PATH "./image/collectable.xpm"
 # endif
 
 typedef struct s_oneforall
@@ -55,6 +44,9 @@ typedef struct s_oneforall
 	int		player_x;
 	int		player_y;
 	int		move_cnt;
+	int		collectable_cnt;
+	int		exit_x;
+	int		exit_y;
 	void	*mlx;
 	void	*win;
 	void	*imgs[5];
@@ -75,6 +67,8 @@ typedef enum e_objs
 /* utils.c */
 void	put_step(t_oneforall *all);
 /* map.c */
+int		set_map(int line_cnt, char ***map, char *argv);
+/* validation.c */
 int		vali_map_inner(t_oneforall **all);
 int		vali_map_outter(t_oneforall **all);
 int		vali_map_shape(t_oneforall **all);
@@ -87,5 +81,6 @@ void	press_a(t_oneforall *all);
 void	press_s(t_oneforall *all);
 void	press_d(t_oneforall *all);
 void	press_w(t_oneforall *all);
+void	put_event(t_oneforall *all, void (*func)(t_oneforall *));
 
 #endif
